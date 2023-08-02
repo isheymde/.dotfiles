@@ -5,9 +5,21 @@ if [ "$EUID" -ne 0 ]
 	exit
 fi
 
-rpm-ostree cancel
+dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-rpm-ostree override remove firefox firefox-langpacks
-rpm-ostree install adw-gtk3-theme papirus-icon-theme stow distrobox \
-					gnome-tweaks gnome-shell-extension-just-perfection \
-					gnome-shell-extension-appindicator alacritty
+rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+
+dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld
+dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+
+dnf remove -y firefox firefox-langpacks gnome-maps gnome-photos totem gnome-boxes gnome-weather \
+            gnome-tour cheese rhythmbox baobab gnome-connections gnome-logs mediawriter \
+            simple-scan gnome-contacts gnome-abrt gnome-classic-session libreoffice* \
+            evince eog gnome-characters gnome-font-viewer gnome-calculator gnome-calendar \
+            gnome-clocks gnome-text-editor gnome-system-monitor 
+           
+dnf install -y adw-gtk3-theme easyeffects gnome-tweaks gnome-shell-extension-appindicator \
+	        gnome-shell-extension-just-perfection p7zip p7zip-plugins go code stow neovim ripgrep \
+            fd-find papirus-icon-theme htop yt-dlp ffmpeg opus-tools alacritty npm awscli2
