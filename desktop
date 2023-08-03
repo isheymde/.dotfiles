@@ -16,9 +16,9 @@ flatpak install flathub -y org.chromium.Chromium org.gnome.World.Secrets \
 							org.nicotine_plus.Nicotine org.telegram.desktop org.gnome.Boxes \
 							com.brave.Browser io.mpv.Mpv
 
-gnome-shell-extension-tool -d background-logo@fedorahosted.org
-gnome-shell-extension-tool -e just-perfection-desktop@just-perfection
-gnome-shell-extension-tool -e appindicatorsupport@rgcjonas.gmail.com
+gnome-extensions disable background-logo@fedorahosted.org
+gnome-extensions enable just-perfection-desktop@just-perfection
+gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 
 gsettings set org.gnome.shell.keybindings toggle-application-view []
 gsettings set org.gnome.shell.keybindings toggle-overview []

@@ -19,7 +19,11 @@ dnf remove -y firefox firefox-langpacks gnome-maps gnome-photos totem gnome-boxe
             simple-scan gnome-contacts gnome-abrt gnome-classic-session libreoffice* \
             evince eog gnome-characters gnome-font-viewer gnome-calculator gnome-calendar \
             gnome-clocks gnome-text-editor gnome-system-monitor 
+
+dnf swap --best --allowerasing -y ffmpeg-free ffmpeg
            
 dnf install -y adw-gtk3-theme easyeffects gnome-tweaks gnome-shell-extension-appindicator \
 	        gnome-shell-extension-just-perfection p7zip p7zip-plugins go code stow neovim ripgrep \
-            fd-find papirus-icon-theme htop yt-dlp ffmpeg opus-tools alacritty npm awscli2
+            fd-find papirus-icon-theme htop yt-dlp opus-tools alacritty npm awscli2
+
+reboot
