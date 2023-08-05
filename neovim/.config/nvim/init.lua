@@ -6,7 +6,7 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.updatetime = 50
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.cmd('colorscheme nightfox')
+vim.cmd('colorscheme zenwritten')
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -44,11 +44,14 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 --packer
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
-	use 'EdenEast/nightfox.nvim'
+    use {
+        'mcchrish/zenbones.nvim',
+        requires = "rktjmp/lush.nvim"
+    }
+    use 'Mofiqul/vscode.nvim'
     use { 'echasnovski/mini.tabline', branch = 'stable' }
     use { 'echasnovski/mini.pairs', branch = 'stable' }
     use 'nvim-tree/nvim-tree.lua'
-    use 'nvim-tree/nvim-web-devicons'
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -77,7 +80,7 @@ end)
 require'nvim-treesitter.configs'.setup {
 	ensure_installed = {"lua", "vim", "go", "javascript", "hcl"},
     sync_install = false,
-    auto_install = true,
+
 	highlight = {
 		enable = false,
         additional_vim_regex_highlighting = false,
@@ -174,11 +177,34 @@ require("nvim_comment").setup({
 })
 
 --tabline
-require('mini.tabline').setup()
+require('mini.tabline').setup({
+    show_icons = false,
+})
 
 --autopairs
 require('mini.pairs').setup()
 
 --nvimtree
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+    renderer = {
+        icons = {
+            show = {
+                file = false,
+                folder = false,
+                folder_arrow = true,
+                git = true,
+                modified = false,
+            },
+            glyphs = {
+                symlink = "",
+                folder = {
+                    arrow_closed = ">",
+                    arrow_open = "v",
+                    symlink = "",
+                    symlink_open = "",
+                },
+            },
+        }
+    }
+})
 vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>")
