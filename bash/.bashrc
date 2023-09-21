@@ -26,6 +26,17 @@ fi
 
 unset rc
 
-alias ww="distrobox enter WorkBox"
-alias hh="distrobox enter HomeBox"
-alias ampv="flatpak run io.mpv.Mpv --no-video"
+# git bash prompt
+export PS1='[\u@\h \W$(declare -F __git_ps1 &>/dev/null && __git_ps1 " (%s)")]\$ '
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+
+# completions
+source /etc/profile.d/bash_completion.sh
+source /usr/share/git-core/contrib/completion/git-prompt.sh
+
+# autocompletions
+complete -C /usr/bin/aws_completer aws
+complete -C /usr/bin/terraform terraform
+source <(kubectl completion bash)
+source <(kind completion bash)

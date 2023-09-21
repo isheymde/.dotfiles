@@ -5,25 +5,25 @@ if [ "$EUID" -ne 0 ]
 	exit
 fi
 
+dnf -y upgrade
+
 dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-
-rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
 dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld
 dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
 
-dnf remove -y firefox firefox-langpacks gnome-maps gnome-photos totem gnome-boxes gnome-weather \
+dnf remove -y firefox firefox-langpacks gnome-maps totem gnome-boxes gnome-weather \
             gnome-tour cheese rhythmbox baobab gnome-connections gnome-logs mediawriter \
             simple-scan gnome-contacts gnome-abrt gnome-classic-session libreoffice* \
-            evince eog gnome-characters gnome-font-viewer gnome-calculator gnome-calendar \
-            gnome-clocks gnome-text-editor gnome-system-monitor 
+            gnome-characters gnome-font-viewer gnome-calculator gnome-text-editor \
+            gnome-system-monitor gnome-software PackageKit \
+            PackageKit-gstreamer-plugin PackageKit-gtk3-module PackageKit-glib  
 
 dnf swap --best --allowerasing -y ffmpeg-free ffmpeg
            
 dnf install -y adw-gtk3-theme easyeffects gnome-tweaks gnome-shell-extension-appindicator \
-	        gnome-shell-extension-just-perfection p7zip p7zip-plugins go code stow neovim ripgrep \
-            fd-find papirus-icon-theme htop yt-dlp opus-tools alacritty npm awscli2
+	        gnome-shell-extension-just-perfection p7zip p7zip-plugins chromium mpv \
+            papirus-icon-theme htop yt-dlp opus-tools rsms-inter-fonts 
 
-reboot
+dnf install -y tmux micro gedit stow g++ go npm python3-pip
