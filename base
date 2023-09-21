@@ -26,5 +26,5 @@ dnf install -y adw-gtk3-theme easyeffects gnome-tweaks gnome-shell-extension-app
 	        gnome-shell-extension-just-perfection p7zip p7zip-plugins chromium mpv \
             papirus-icon-theme htop yt-dlp opus-tools rsms-inter-fonts 
 
-dnf install -y zsh zsh-autosuggestions zsh-syntax-highlighting tmux micro gedit stow g++ \
+dnf install -y zsh zsh-syntax-highlighting tmux micro gedit stow g++ \
             go npm python3-pip awscli2
