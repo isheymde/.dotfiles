@@ -12,7 +12,8 @@ flatpak install flathub -y  org.gnome.World.Secrets org.prismlauncher.PrismLaunc
 							org.gnome.Loupe org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark \
 							io.github.spacingbat3.webcord com.github.tchx84.Flatseal io.bassi.Amberol \
 							org.telegram.desktop md.obsidian.Obsidian io.github.seadve.Kooha \
-							org.onlyoffice.desktopeditors com.jetbrains.GoLand org.gnome.Boxes  
+							org.onlyoffice.desktopeditors com.jetbrains.GoLand org.gnome.Boxes \
+							org.gnome.Fractal com.github.taiko2k.avvie
 
 gnome-extensions disable background-logo@fedorahosted.org
 gnome-extensions enable just-perfection-desktop@just-perfection
